@@ -13,3 +13,9 @@ body {
     padding-top: 56px;
   }
 }
+.form-inline{
+  padding:30px;
+}
+.form-inline div {
+  padding:10px;
+}

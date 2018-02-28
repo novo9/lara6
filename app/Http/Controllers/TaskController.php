@@ -10,31 +10,35 @@ class TaskController extends Controller
 
     public function index(){
         $tasks =  Task::all();
-        return view('task.tasks',compact('tasks'));
+        return view('tasks.index',compact('tasks'));
     }
+
     public function incomplete(){
             $tasks = Task::incomplete()->get();
-            return view('task.tasks',compact('tasks'));
+            return view('tasks.index',compact('tasks'));
     }
 
     public function show(Task $task){
             return view('task.task',compact('task'));
     }
 
+    public function store(){
 
+        $this->validate(request(),[
+            'user_id' => 'required|integer|max:23',
+            'name' => 'required'
 
+        ]);
 
-
-
-
-
-
-
-    public function create($text){
-        $task = new Task;
-        $task->name = $text;
-        $task->user_id= 1;
-        $task->save();
-return redirect('/tasks');
+        Task::create(request()->all());
+        return redirect('/');
     }
+
+    public function create(){
+       return view('tasks/createTask');
+    }
+
+
 }
+
+

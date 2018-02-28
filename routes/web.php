@@ -12,10 +12,18 @@
 */
 
 use App\Task;
+//Route::get('/matrix/register', 'MatrixController@registrtationForm');
 
-Route::get('/', function () {
-    return view('posts.index');
-});
+//Route::post('/matrix/register', 'MatrixController@register')->name('matrix.register');
+//Route::get('account', 'MatrixController@account')->name('matrix.account');
+
+//Route::post('/tasks','TaskController@create');
+
+Route::get('/','TaskController@index');
+Route::get('/tasks','TaskController@index');
+Route::get('/tasks/create','TaskController@create');
+Route::post('/tasks','TaskController@store');
+Route::get('/tasks/incomplete','TaskController@incomplete');
 
 
 
